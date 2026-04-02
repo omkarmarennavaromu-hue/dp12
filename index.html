@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omkar — Premium Minimal Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,slnt,wght@0,0..100;0,0..30;0,0..50;0,0..100;0,0..150;0,0..950;1,-15..0,0..100;1,-15..0,0..950&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: #0f0f0f;
+            line-height: 1.7;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Typography */
+        .hero-title {
+            font-family: 'Inter Tight', sans-serif;
+            font-size: 96px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            margin-bottom: 28px;
+        }
+
+        .section-title {
+            font-family: 'Inter Tight', sans-serif;
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 28px;
+        }
+
+        .project-title {
+            font-family: 'Inter Tight', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .body-text {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.7;
+            max-width: 600px;
+        }
+
+        .meta-text {
+            font-size: 14px;
+            color: #8a8a8a;
+        }
+
+        /* Sections */
+        section {
+            padding: 140px 0;
+        }
+
+        .large-gap {
+            padding-bottom: 160px;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(120,119,198,0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120,219,255,0.2) 0%, transparent 50%);
+            border-radius: 8px;
+            margin-top: 56px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* About */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 100px;
+            align-items: start;
+        }
+
+        .divider {
+            height: 1px;
+            background: #eaeaea;
+            margin: 56px 0;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 56px;
+        }
+
+        .project {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            transition: transform 0.4s ease;
+        }
+
+        .project-1 .project-image { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .project-2 .project-image { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .project-3 .project-image { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .project-4 .project-image { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+
+        /* Skills */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .skills span {
+            background: #f8f8f8;
+            padding: 12px 24px;
+            border-radius: 100px;
+            transition: background 0.3s ease;
+        }
+
+        .skills span:hover {
+            background: #111111;
+            color: white;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 56px;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-item a {
+            color: #0f0f0f;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #111111;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 56px 0;
+            text-align: center;
+            border-top: 1px solid #eaeaea;
+            font-size: 14px;
+            color: #6b6b6b;
+        }
+
+        /* Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .parallax {
+            transition: transform 0.6s ease-out;
+        }
+
+        /* Hover effects */
+        .project:hover .project-image {
+            transform: scale(1.02);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 64px; letter-spacing: -1px; }
+            .section-title { font-size: 36px; }
+            .project-title { font-size: 24px; }
+            .about { grid-template-columns: 1fr; gap: 56px; }
+            section { padding: 80px 0; }
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero fade-up">
+        <div class="container">
+            <h1 class="hero-title">Omkar</h1>
+            <p class="body-text" style="max-width: 600px; margin: 0 auto;">Creative Web Developer crafting immersive 3D web experiences.</p>
+            <div class="hero-image parallax"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about fade-up large-gap">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">About</h2>
+                <div class="divider"></div>
+                <p class="body-text">"I am Omkar, focused on building modern web experiences using Three.js, UI/UX design, and interactive visuals that feel alive and thoughtful."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects fade-up">
+        <div class="container">
+            <h2 class="section-title">Selected Projects</h2>
+            <div class="projects-grid">
+                <div class="project project-1 fade-up">
+                    <h3 class="project-title">Procedural 3D Gallery</h3>
+                    <p class="body-text">Interactive gallery built with Three.js and custom shaders.</p>
+                    <div class="project-image parallax"></div>
+                </div>
+                <div class="divider"></div>
+
+                <div class="project project-2 fade-up">
+                    <h3 class="project-title">Neon Dashboard Interface</h3>
+                    <p class="body-text">Futuristic dashboard UI with smooth micro-interactions.</p>
+                    <div class="project-image parallax"></div>
+                </div>
+                <div class="divider"></div>
+
+                <div class="project project-3 fade-up">
+                    <h3 class="project-title">AI Visualization Tool</h3>
+                    <p class="body-text">Data visualized using animated 3D elements.</p>
+                    <div class="project-image parallax"></div>
+                </div>
+                <div class="divider"></div>
+
+                <div class="project project-4 fade-up">
+                    <h3 class="project-title">Interactive Landing Experience</h3>
+                    <p class="body-text">Scroll-based storytelling with 3D depth.</p>
+                    <div class="project-image parallax"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section fade-up">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>React</span>
+                <span>Three.js</span>
+                <span>Blender</span>
+                <span>Python</span>
+                <span>UI/UX</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact fade-up">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="meta-text">Email</span>
+                    <a href="mailto:omkarmarennavaromu@gmail.com">omkarmarennavaromu@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span class="meta-text">Instagram</span>
+                    <a href="https://instagram.com/07_omya_650" target="_blank">instagram.com/07_omya_650</a>
+                </div>
+                <div class="contact-item">
+                    <span class="meta-text">Phone</span>
+                    <a href="tel:+919538626167">9538626167</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© Omkar</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-up elements
+        document.querySelectorAll('.fade-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelectorAll('.parallax');
+            parallax.forEach(el => {
+                const speed = 0.5;
+                el.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
